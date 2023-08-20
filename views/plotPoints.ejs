@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story outline</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Story outline</h1>
+    <ul>
+    <% plotPoints.forEach( el => { %>
+            <li class='plotItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.plotPoint %></span>
+                <span class='del'> Delete </span>
+            </li>
+    <% }) %>    
+    </ul>
+
+    <h2><%= user.userName %> has <%= left %> plot points left to write.</h2>
+
+    <!-- change the action -->
+    <form action="/plotPoints/createPlot" method='POST'>
+        <input type="text" placeholder="Enter plot point" name='plotItem'>
+        <input type="submit">
+    </form>
+
+    <a href="/logout">Logout</a>
+    <a href="/todos">Add names for your characters</a>
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>
